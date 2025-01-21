@@ -1,0 +1,34 @@
+# hardware_config.yaml
+
+hardware:
+  bits_per_cycle: 512     # Number of bits transferred per cycle
+  bus_frequency: 200      # Memory bus frequency in MHz
+  cgra_frequency: 200     # Core clock frequency in MHz
+  array_size: 64          # Number of PEs. not used yet
+  memory_size: 64        # KB. not used yet
+  interconnect: mesh      # mesh, torus, etc. not used yet
+  memory_hierarchy:       # not used yet
+    - L1
+    - L2
+    - DRAM
+
+  # Memory specifications
+  dram:
+    size: 32             # MB
+    latency: 100         # cycles
+    bandwidth: 256     # MB/s
+
+  central_sram:
+    size: 512            # KB
+    latency: 10          # cycles
+    bandwidth: 100     # MB/s
+
+  cgra_sram:
+    size: 32             # KB
+    latency: 1           # cycles
+    bandwidth: 64      # MB/s
+
+  # DMA specifications
+  dma:
+    transfer_rate: 1    # bytes per cycle
+    burst_size: 1       # bytes

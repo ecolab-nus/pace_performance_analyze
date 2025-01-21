@@ -1,0 +1,37 @@
+# gemm_config.yaml
+
+# Matrix dimensions to analyze
+dimensions:
+  - 32
+  - 64
+  - 128
+  - 512
+  - 1024
+
+# Data type configuration
+data_type:
+  size: 2  # bytes per element
+  type: "int16"  # float32, int8, etc.
+
+# Tiling configuration
+tiling:
+  enabled: true
+  tile_sizes:
+    M: [32, 64, 128]  # tile sizes for M dimension
+    N: [32, 64, 128]  # tile sizes for N dimension
+    K: [32, 64, 128]  # tile sizes for K dimension
+
+# Memory access pattern
+memory_pattern:
+  matrix_layout: "row_major"  # row_major or col_major
+  vectorization: 1  # elements per vector
+
+# Analysis configuration
+analysis:
+  output_prefix: "gemm_analysis"
+  save_detailed_results: false
+  metrics:
+    - computation_cycles
+    - memory_utilization
+    - dma_transfers
+    - energy_estimation

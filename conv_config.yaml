@@ -1,0 +1,46 @@
+# conv_config.yaml
+
+# Input dimensions to analyze
+input_dimensions:
+  - 16
+  - 32
+  - 64
+  - 128
+  - 256
+
+# Kernel configurations
+kernel_sizes: [3, 5, 7]
+num_channels: 3
+num_filters: 64
+
+# Convolution parameters
+padding: 1
+stride: 1
+dilation: 1
+groups: 1
+
+# Data type configuration
+data_type_size: 4  # bytes per element
+
+# Tiling configuration
+tiling:
+  enabled: true
+  input_tile_size: [32, 32]
+  kernel_tile_size: [3, 3]
+  channel_tile_size: 16
+  filter_tile_size: 32
+
+# Memory access pattern
+memory_pattern:
+  input_layout: "NCHW"  # NCHW or NHWC
+  kernel_layout: "KCRS"  # KCRS or CKRS
+  vectorization: 4  # elements per vector
+
+# Analysis configuration
+analysis:
+  output_prefix: "conv_analysis"
+  save_detailed_results: false
+  metrics:
+    - computation_cycles
+    - memory_utilization
+    - dma_transfers

@@ -16,19 +16,19 @@ hardware:
   dram:
     size: 32             # MB
     latency: 100         # cycles
-    bandwidth: 256     # MB/s
+    bandwidth: 20     # MB/s
 
   central_sram:
-    size: 512            # KB
-    latency: 10          # cycles
-    bandwidth: 100     # MB/s
+    size: 512            # KB, not used yet
+    latency: 10          # cycles. not used yet
+    bandwidth: 20     # MB/s
 
-  cgra_sram:
+  cgra_sram:            # not used yet
     size: 32             # KB
     latency: 1           # cycles
     bandwidth: 64      # MB/s
 
   # DMA specifications
-  dma:
+  dma:        # not used yet
     transfer_rate: 1    # bytes per cycle
     burst_size: 1       # bytes

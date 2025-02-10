@@ -121,6 +121,8 @@ class GEMMAnalyzer(BaseAnalyzer):
         # Calculate reloads based on working set and buffer size
         reloads = max(1, working_set / buffer_size)
         total_central_cgra *= reloads
+
+        # print( "dim:", dim, ",total data transfered from central SPM to cgra:", total_central_cgra)
         
         # Calculate Central SRAM to CGRA latency
         central_to_cgra = self._calculate_transfer_latency(total_central_cgra)
@@ -146,6 +148,9 @@ class GEMMAnalyzer(BaseAnalyzer):
         # Get memory transfer latencies with data reloading
         memory_latencies = self.calculate_memory_access_latency(dim, mem_req, config)
         computation = 2 * dim * dim * dim  # Basic model: 2 ops per element
+        print("operation count:", dim, computation)
+        computation =  computation / 4 # the number of operation that a CGRA can execute per cycle
+        
         
         return {
             'dram_to_central': memory_latencies['dram_to_central'],

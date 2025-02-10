@@ -160,6 +160,7 @@ class ConvAnalyzer(BaseAnalyzer):
         output_dim = ((input_dim + 2*config.padding - kernel_size) // config.stride) + 1
         computation = 2 * kernel_size * kernel_size * config.num_channels * output_dim * output_dim * config.num_filters
         
+        computation = computation/4  # assume 4 operations where a 8x8 cgra can execute per cycle
         return {
             'dram_to_central': memory_latencies['dram_to_central'],
             'central_to_cgra': memory_latencies['central_to_cgra'],

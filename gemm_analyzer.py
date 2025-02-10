@@ -148,7 +148,7 @@ class GEMMAnalyzer(BaseAnalyzer):
         # Get memory transfer latencies with data reloading
         memory_latencies = self.calculate_memory_access_latency(dim, mem_req, config)
         computation = 2 * dim * dim * dim  # Basic model: 2 ops per element
-        print("operation count:", dim, computation)
+        # print("operation count:", dim, computation)
         computation =  computation / 4 # the number of operation that a CGRA can execute per cycle
         
         

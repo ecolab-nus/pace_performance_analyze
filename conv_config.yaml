@@ -9,7 +9,8 @@ input_dimensions:
   - 256
 
 # Kernel configurations
-kernel_sizes: [3, 5, 7]
+# kernel_sizes: [3, 5, 7]
+kernel_sizes: [3]
 num_channels: 3
 num_filters: 64
 
